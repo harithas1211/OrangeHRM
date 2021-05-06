@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseClass {
@@ -30,6 +31,11 @@ public class BaseClass {
 		driver.get("https://opensource-demo.orangehrmlive.com/index.php/auth/login");
 		driver.manage().window().maximize();
 		setDriver(driver);
+	}
+	
+	@AfterMethod
+	public void closeBrowser() {
+		driver.quit();
 	}
 
 	public void waitTillElementVisible(WebDriver driver,WebElement ele) {
